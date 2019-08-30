@@ -7,11 +7,16 @@ import {RouterModule} from '@angular/router';
 import {RoutingModule} from './app.router';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {GraficoComponent} from './grafico/grafico.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    GraficoComponent
+
+
   ],
   imports: [
     BrowserModule,

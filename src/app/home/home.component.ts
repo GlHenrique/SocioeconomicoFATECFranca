@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {UiCookie, UiToolbarService} from 'ng-smn-ui';
 import * as XLSX from 'xlsx';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +15,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   menuOpen: boolean;
   title: string;
-
   arrayBuffer: any;
   file: File;
-
-  insertFile(event) {
-    this.file = event.target.files[0];
-  }
-
-  constructor() {
+  info: {};
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -38,24 +34,32 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  insertFile(event) {
+    this.file = event.target.files[0];
+  }
 
   Upload() {
-    const fileReader = new FileReader();
-    fileReader.onload = (e) => {
-      this.arrayBuffer = fileReader.result;
-      const data = new Uint8Array(this.arrayBuffer);
-      const arr = new Array();
-      for (let i = 0; i !== data.length; ++i) {
-        arr[i] = String.fromCharCode(data[i]);
-      }
-      const bstr = arr.join('');
-      const workbook = XLSX.read(bstr, {type: 'binary'});
-      const firstSheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[firstSheetName];
-      console.log(XLSX.utils.sheet_to_json(worksheet, {raw: true}));
-      const RESULT = XLSX.utils.sheet_to_json(worksheet, {raw: true});
-    };
-    fileReader.readAsArrayBuffer(this.file);
+    if (this.file !== undefined) {
+      const fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        this.arrayBuffer = fileReader.result;
+        const data = new Uint8Array(this.arrayBuffer);
+        const arr = new Array();
+        for (let i = 0; i !== data.length; ++i) {
+          arr[i] = String.fromCharCode(data[i]);
+        }
+        const bstr = arr.join('');
+        const workbook = XLSX.read(bstr, {type: 'binary'});
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        this.info = XLSX.utils.sheet_to_json(worksheet, {raw: true});
+        this.router.navigate(['/grafico']);
+        console.log(this.info);
+      };
+      fileReader.readAsArrayBuffer(this.file);
+    } else {
+      console.log('teste');
+    }
   }
 
   ngOnDestroy(): void {

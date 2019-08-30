@@ -1,7 +1,35 @@
-.card-title {
+ui-card {
+  border-radius: 10px;
+  margin: 5%;
+}
+
+#icon-upload {
+  width: 80px;
+}
+
+.container {
+  margin-top: 5%;
+}
+
+.corpo-esqueleto {
   display: flex;
-  justify-content: center;
-  margin-top: 8%;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 2%;
+}
+
+.esqueleto {
+  border: 2px dashed #C7CCD2;
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  flex-direction: column;
+  padding: 10%;
+  justify-content: space-between;
+}
+
+.messages {
+  text-align: center;
 }
 
 

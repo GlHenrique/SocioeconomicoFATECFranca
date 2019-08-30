@@ -20,10 +20,30 @@
   </div>
 </ui-nav-drawer>
 
+<div class="ui-s480 break-on-s480">
+  <ui-card>
+    <ui-card-content>
+      <div class="esqueleto">
+        <div class="corpo-esqueleto">
+          <img alt="" id="icon-upload" src="/assets/upload1.svg">
+        </div>
+        <div class="corpo-esqueleto">
+          <div class="messages">
+            <h3>Arraste e solte o arquivo aqui.</h3>
+            <h3>Ou</h3>
+          </div>
+        </div>
+        <div class="corpo-esqueleto">
+          <button (click)="submitFile.click()" class="ui-button success">Enviar arquivo</button>
+        </div>
+      </div>
+    </ui-card-content>
+    <input #submitFile hidden type="file" (change)="insertFile($event);Upload()" placeholder="Upload file"
+           accept=".xlsx">
+  </ui-card>
 
-<input type="file" style="display: inline-block;" (change)="insertFile($event)" placeholder="Upload file" accept=".xlsx">
-<br>
-<button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+</div>
+
 
 
 
