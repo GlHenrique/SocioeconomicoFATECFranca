@@ -1,9 +1,10 @@
 {
-  "name": "testes",
+  "name": "Socioeconomico",
+  "author": "Glenio Carvalho <glenio.henrique@smn.com.br>",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port=4200 --disable-host-check --host=0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
