@@ -1,0 +1,26 @@
+<ui-toolbar class="fixed flat elevate-on-scroll primary elevate-on-s960" id="app-header">
+  <button (click)="menuOpen = true" class="ui-button flat icon" uiRipple>
+    <i class="material-icons">menu</i>
+  </button>
+  <span class="title">{{title}}</span>
+</ui-toolbar>
+
+<ui-nav-drawer class="persistent" [(open)]="menuOpen">
+  <ui-toolbar class="flat">
+    <button (click)="menuOpen = false" class="ui-button flat icon" uiRipple>
+      <i class="material-icons">arrow_back</i>
+    </button>
+    <span class="title">{{title}}</span>
+  </ui-toolbar>
+  <div class="ui-nav-drawer-overflow">
+    <div class="ui-list">
+      <a class="ui-list-item" uiRipple routerLink="/" [routerLinkActive]="['active']"
+         [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    </div>
+  </div>
+</ui-nav-drawer>
+
+
+
+
+
