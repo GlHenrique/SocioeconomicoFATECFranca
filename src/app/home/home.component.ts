@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {UiCookie, UiToolbarService} from 'ng-smn-ui';
 import * as XLSX from 'xlsx';
 import {Router} from '@angular/router';
@@ -10,14 +10,18 @@ import {Router} from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   providers: [UiToolbarService]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
 
 
   menuOpen: boolean;
   title: string;
   arrayBuffer: any;
   file: File;
-  info: {};
+  data: Object;
+  info: any;
+
+  curso: any
+
   constructor(private router: Router) {
   }
 
@@ -32,6 +36,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (isNavDrawerPersistent) {
       this.menuOpen = true;
     }
+
+    this.data = {
+      chart: { },
+      data: [
+        {value: 500},
+        {value: 600},
+        {value: 700}
+      ]
+    };
   }
 
   insertFile(event) {
@@ -53,16 +66,23 @@ export class HomeComponent implements OnInit, OnDestroy {
         const firstSheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[firstSheetName];
         this.info = XLSX.utils.sheet_to_json(worksheet, {raw: true});
-        this.router.navigate(['/grafico']);
-        console.log(this.info);
+        //this.router.navigate(['/grafico']);
+        //console.log(this.info.length);
+        for (var i = 0; i < this.info.length; i++) {
+          console.log(this.info[i])
+           //Devemos agora criar uma variavel para cada item do form
+        }
       };
       fileReader.readAsArrayBuffer(this.file);
+      return this.info
     } else {
       console.log('teste');
     }
   }
 
-  ngOnDestroy(): void {
-  }
+  
+
+
+
 
 }

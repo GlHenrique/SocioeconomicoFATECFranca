@@ -8,6 +8,12 @@ import {RoutingModule} from './app.router';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {GraficoComponent} from './grafico/grafico.component';
+import { FusionChartsModule } from 'angular-fusioncharts';
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+
+
+FusionChartsModule.fcRoot(FusionCharts, Charts)
 
 
 @NgModule({
@@ -24,7 +30,8 @@ import {GraficoComponent} from './grafico/grafico.component';
     RouterModule,
     RoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FusionChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
