@@ -92,15 +92,12 @@ export class HomeComponent implements OnInit {
         const firstSheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[firstSheetName];
         this.info = XLSX.utils.sheet_to_json(worksheet, {raw: true});
+        console.log(this.info)
         // this.router.navigate(['/grafico']);
         for (let i = 0; i < this.info.length; i++) {
-            console.log(this.info[i].Curso);
-            console.log(this.info[i].Período);
-            console.log(this.info[i]);
-          // preciso alterar esses consoles acima para conforme o form
-
+          // console.log(this.info[i]["Curso"])
+          console.log(this.info[i]["Gênero"])
         }
-        console.log(this.info);
       };
       fileReader.readAsArrayBuffer(this.file);
       return this.info
