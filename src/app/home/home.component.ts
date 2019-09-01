@@ -92,40 +92,15 @@ export class HomeComponent implements OnInit {
         const firstSheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[firstSheetName];
         this.info = XLSX.utils.sheet_to_json(worksheet, {raw: true});
-        //this.router.navigate(['/grafico']);
-        //console.log(this.info.length);
+        // this.router.navigate(['/grafico']);
         for (let i = 0; i < this.info.length; i++) {
-          // console.log(this.info[i])
-          console.log(this.info[i].Curso);
-          console.log(this.info[i].periodo);
-          console.log(this.info[i].semestre);
-          console.log(this.info[i].genero);
-          console.log(this.info[i].dataNascimento);
-          console.log(this.info[i].estadoCivil);
-          console.log(this.info[i].deficiencia);
-          console.log(this.info[i].filhos);
-          console.log(this.info[i].municipio);
-          console.log(this.info[i].transporte);
-          console.log(this.info[i].Curdomicilioso);
-          console.log(this.info[i].tempoResidencia);
-          console.log(this.info[i].comQuem);
-          console.log(this.info[i].quantidadeFamilia);
-          console.log(this.info[i].quantidadeDinheiro);
-          console.log(this.info[i].internet);
-          console.log(this.info[i].meiosInternet);
-          console.log(this.info[i].somaRenda);
-          console.log(this.info[i].escolaridadeMae);
-          console.log(this.info[i].escolaridadePai);
-          console.log(this.info[i].areaTrabalho);
-          console.log(this.info[i].periodoTrabalho);
-          console.log(this.info[i].ondeEstudou);
-          console.log(this.info[i].conhecimentoInformatica);
-          console.log(this.info[i].quaisAplicativos);
-          console.log(this.info[i].idioma);
-
+            console.log(this.info[i].Curso);
+            console.log(this.info[i].Período);
+            console.log(this.info[i]);
           // preciso alterar esses consoles acima para conforme o form
 
         }
+        console.log(this.info);
       };
       fileReader.readAsArrayBuffer(this.file);
       return this.info
@@ -134,7 +109,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  
+
 
 
 
