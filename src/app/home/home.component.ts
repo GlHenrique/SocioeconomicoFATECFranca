@@ -17,13 +17,16 @@ export class HomeComponent implements OnInit {
   title: string;
   arrayBuffer: any;
   file: File;
-  data: Object;
   info: any;
+  data: any;
 
-  curso: any
+  cursoADS: number = 0;
+  cursoGRH: number = 0;
+  cursoGPI: number = 0;
   periodo: any;
   semestre: any;
-  genero: any;
+  generoM: number = 0;
+  generoF : number = 0
   dataNascimento: any;
   estadoCivil: any;
   deficiencia: any;
@@ -49,6 +52,7 @@ export class HomeComponent implements OnInit {
   estudouFatec: any;
 
   constructor(private router: Router) {
+
   }
 
   ngOnInit() {
@@ -66,11 +70,13 @@ export class HomeComponent implements OnInit {
     this.data = {
       chart: { },
       data: [
-        {value: 500},
-        {value: 600},
-        {value: 700}
+        {value: this.cursoADS},
+        {value: this.cursoGPI},
+        {value: this.cursoGRH}
       ]
     };
+
+  
   }
 
   insertFile(event) {
@@ -96,8 +102,40 @@ export class HomeComponent implements OnInit {
         // this.router.navigate(['/grafico']);
         for (let i = 0; i < this.info.length; i++) {
           // console.log(this.info[i]["Curso"])
-          console.log(this.info[i]["Gênero"])
+          console.log(this.info[i]["Gênero"]);
+          switch (this.info[i]["Curso"]) {
+            case "Análise e Desenvolvimento de Sistemas (ADS)":
+              this.cursoADS++
+              console.log(this.cursoADS);
+              break;
+            case "Gestão de Recursos Humanos (GRH)":
+              this.cursoGRH++
+              console.log(this.cursoGRH);
+              break;
+            case "Gestão da Produção Industrial (GPI)":
+              this.cursoGPI++
+              console.log(this.cursoGPI);
+              break;
+          }
+
+        
+
+
+          switch (this.info[i]["Gênero"]) {
+            case "Masculino":
+              this.generoM++;
+              break;
+            case "Feminino":
+              this.generoF++;
+            break;
+          }
+          // console.log(this.generoM);
+          // console.log(this.generoF);
+          // console.log(this.info[i]);
         }
+
+      
+        
       };
       fileReader.readAsArrayBuffer(this.file);
       return this.info
