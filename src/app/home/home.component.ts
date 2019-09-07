@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   periodo: any;
   semestre: any;
   generoM: number = 0;
-  generoF: number = 0
+  generoF: number = 0;
   dataNacimento: any;
   estadoCivil: any;
   deficiencia = 0;
@@ -119,6 +119,52 @@ export class HomeComponent implements OnInit {
   cincoPessoasExercem = 0;
   tenhoInternet = 0;
   naoTenhoInternet = 0;
+  meioSalario = 0;
+  meioSalarioADoisSalarios = 0;
+  doisSalariosATresSalarios = 0;
+  tresSalariosACincoSalarios = 0;
+  cincoSalariosADezSalarios = 0;
+  dezSalariosADezesseteSalarios = 0;
+  acimaDezesseteSalarios = 0;
+  maeNuncaEstudouENaoSabeLer = 0;
+  maeNuncaEstudouMasSabeLer = 0;
+  maePrimarioIncompleto = 0;
+  maePrimarioCompletoGinasialIncompleto = 0;
+  maeGinasialCompletoColegialIncompleto = 0;
+  maeColegialCompleto = 0;
+  maeUniversitarioIncompleto = 0;
+  maeUniversitarioCompleto = 0;
+
+  paiNuncaEstudouENaoSabeLer = 0;
+  paiNuncaEstudouMasSabeLer = 0;
+  paiPrimarioIncompleto = 0;
+  paiPrimarioCompletoGinasialIncompleto = 0;
+  paiGinasialCompletoColegialIncompleto = 0;
+  paiColegialCompleto = 0;
+  paiUniversitarioIncompleto = 0;
+  paiUniversitarioCompleto = 0;
+  nuncaTrabalhei = 0;
+  desempregadoMasJaTrabalheiNaArea = 0;
+  trabalhoNaArea = 0;
+  trabalhoForaDaArea = 0;
+  desempregadoENuncaTrabalheiNaArea = 0;
+  manhaOuTarde = 0;
+  manhaETarde = 0;
+  noite = 0;
+  regimeDeTurnos = 0;
+  variavel = 0;
+  integralmenteEscolaPublica = 0;
+  integralmenteEscolaParticular = 0;
+  maiorParteEscolaPublica = 0;
+  maiorParteEscolaParticular = 0;
+  tenhoConhecimentoInformatica = 0;
+  naoTenhoConhecimentoInformatica = 0;
+  faloIngles = 0;
+  faloEspanhol = 0;
+  faloInglesEEspanhol = 0;
+  jaEstudei = 0;
+  naoEstudei = 0;
+
 
   constructor(private router: Router) {
 
@@ -167,19 +213,19 @@ export class HomeComponent implements OnInit {
         const firstSheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[firstSheetName];
         this.info = XLSX.utils.sheet_to_json(worksheet, {raw: true});
-        console.log(this.info)
+        console.log(this.info);
         // this.router.navigate(['/grafico']);
         for (let i = 0; i < this.info.length; i++) {
 
           switch (this.info[i].Curso) {
             case 'Análise e Desenvolvimento de Sistemas (ADS)':
-              this.cursoADS++
+              this.cursoADS++;
               break;
             case 'Gestão de Recursos Humanos (GRH)':
-              this.cursoGRH++
+              this.cursoGRH++;
               break;
             case 'Gestão da Produção Industrial (GPI)':
-              this.cursoGPI++
+              this.cursoGPI++;
               break;
           }
 
@@ -192,7 +238,7 @@ export class HomeComponent implements OnInit {
               break;
           }
 
-          switch (this.info[i]["Semestre (Ciclo)"]) {
+          switch (this.info[i]['Semestre (Ciclo)']) {
             case '1º Ciclo':
               this.ciclo1++;
               break;
@@ -237,34 +283,34 @@ export class HomeComponent implements OnInit {
           //       this.acima30++;
           //   }
           // }
-          switch (this.info[i]["Estado Civil"]) {
+          switch (this.info[i]['Estado Civil']) {
             case 'Solteiro':
-              this.solteiro++
+              this.solteiro++;
               break;
             case 'Casado':
-              this.casado++
+              this.casado++;
               break;
             case 'Separado':
               this.separado++;
               break;
             case 'Divorciado':
-              this.divorciado++
+              this.divorciado++;
               break;
             case 'Viúvo':
-              this.viuvo++
+              this.viuvo++;
               break;
             default:
               this.uniaoEstavel++;
 
           }
 
-          switch (this.info[i]["Você é portador de Deficiências?"]) {
+          switch (this.info[i]['Você é portador de Deficiências?']) {
             case 'Não':
               this.deficiencia++;
               break;
           }
 
-          switch (this.info[i]["Quantos filhos você possui?"]) {
+          switch (this.info[i]['Quantos filhos você possui?']) {
             case 'Nenhum':
               this.zeroFilhos++;
               break;
@@ -281,10 +327,10 @@ export class HomeComponent implements OnInit {
               this.quatroFilhos++;
               break;
             default:
-              this.maisDeQuatroFilhos++
+              this.maisDeQuatroFilhos++;
           }
 
-          switch (this.info[i]["Município de residência"]) {
+          switch (this.info[i]['Município de residência']) {
             case 'Franca':
               this.franca++;
               break;
@@ -318,7 +364,7 @@ export class HomeComponent implements OnInit {
 
           }
 
-          switch (this.info[i]["Normalmente, como você vai para a Faculdade?"]) {
+          switch (this.info[i]['Normalmente, como você vai para a Faculdade?']) {
             case 'Aplicativo de transporte (Ex.: Uber, 99 Táxi, Lift)':
               this.aplicativoTransporte++;
               break;
@@ -329,10 +375,10 @@ export class HomeComponent implements OnInit {
               this.bicicleta++;
               break;
             case 'Carona':
-              this.carona++
+              this.carona++;
               break;
             case 'Carro próprio':
-              this.carroProprio++
+              this.carroProprio++;
               break;
             case 'Moto própria':
               this.motoPropria++;
@@ -345,7 +391,7 @@ export class HomeComponent implements OnInit {
               break;
           }
 
-          switch (this.info[i]["Situação do domicílio onde mora."]) {
+          switch (this.info[i]['Situação do domicílio onde mora.']) {
             case 'Alugado':
               this.alugado++;
               break;
@@ -363,7 +409,7 @@ export class HomeComponent implements OnInit {
               break;
           }
 
-          switch (this.info[i]["Há aproximadamente quanto tempo você reside neste domicílio?"]) {
+          switch (this.info[i]['Há aproximadamente quanto tempo você reside neste domicílio?']) {
             case 'Menos de 1 ano':
               this.menosUmAno++;
               break;
@@ -384,7 +430,7 @@ export class HomeComponent implements OnInit {
               break;
           }
 
-          switch (this.info[i]["Com quem você mora?"]) {
+          switch (this.info[i]['Com quem você mora?']) {
             case 'Sozinho(a)':
               this.sozinho++;
               break;
@@ -403,7 +449,7 @@ export class HomeComponent implements OnInit {
 
           }
 
-          switch (this.info[i]["Quantas pessoas compõem seu núcleo familiar, incluindo você?"]) {
+          switch (this.info[i]['Quantas pessoas compõem seu núcleo familiar, incluindo você?']) {
             case '1':
               this.umaPessoa++;
               break;
@@ -440,7 +486,7 @@ export class HomeComponent implements OnInit {
 
           }
 
-          switch (this.info[i]["Você possui acesso a internet em sua residencia"]) {
+          switch (this.info[i]['Você possui acesso a internet em sua residencia']) {
             case 'Sim':
               this.tenhoInternet++;
               break;
@@ -449,11 +495,178 @@ export class HomeComponent implements OnInit {
               break;
           }
 
+          switch (this.info[i]['Qual é a soma da renda familiar, das pessoas de sua residência?']) {
+            case 'Até 1/2 sálario mínimo':
+              this.meioSalario++;
+              break;
+            case 'De 1/2 salário minimo a 2 salários mínimos':
+              this.meioSalarioADoisSalarios++;
+              break;
+            case 'De 2 salário minimo a 3 salários mínimos':
+              this.doisSalariosATresSalarios++;
+              break;
+            case 'De 3 salário minimo a 5 salários mínimos':
+              this.tresSalariosACincoSalarios++;
+              break;
+            case 'De 5 salário minimo a 10 salários mínimos':
+              this.cincoSalariosADezSalarios++;
+              break;
+            case 'De 10 salário minimo a 17 salários mínimos':
+              this.dezSalariosADezesseteSalarios++;
+              break;
+            case 'Acima de 17 salários mínimos':
+              this.acimaDezesseteSalarios++;
+              break;
+          }
 
+          switch (this.info[i]['Qual o nível de escolaridade de sua mãe?']) {
 
+            case 'Nunca estudou e não sabe ler e escrever':
+              this.maeNuncaEstudouENaoSabeLer++;
+              break;
+            case 'Nunca estudou, mas sabe ler e escrever':
+              this.maeNuncaEstudouMasSabeLer++;
+              break;
+            case 'Nunca estudou, mas sabe ler e escrever':
+              this.maeNuncaEstudouMasSabeLer++;
+              break;
+            case 'Primário incompleto':
+              this.maePrimarioIncompleto++;
+              break;
+            case 'Primário completo/ginasial incompleto':
+              this.maePrimarioCompletoGinasialIncompleto++;
+              break;
+            case 'Ginasial completo/colegial incompleto':
+              this.maeGinasialCompletoColegialIncompleto++;
+              break;
+            case 'Colegial completo':
+              this.maeColegialCompleto++;
+              break;
+            case 'Universitário incompleto':
+              this.maeUniversitarioIncompleto++;
+              break;
+            case 'Universitário completo':
+              this.maeUniversitarioCompleto++;
+              break;
+          }
+          switch (this.info[i]['Qual o nível de escolaridade de seu pai?']) {
+            case 'Nunca estudou e não sabe ler e escrever':
+              this.paiNuncaEstudouENaoSabeLer++;
+              break;
+            case 'Nunca estudou, mas sabe ler e escrever':
+              this.paiNuncaEstudouMasSabeLer++;
+              break;
+            case 'Nunca estudou, mas sabe ler e escrever':
+              this.paiNuncaEstudouMasSabeLer++;
+              break;
+            case 'Primário incompleto':
+              this.paiPrimarioIncompleto++;
+              break;
+            case 'Primário completo/ginasial incompleto':
+              this.paiPrimarioCompletoGinasialIncompleto++;
+              break;
+            case 'Ginasial completo/colegial incompleto':
+              this.paiGinasialCompletoColegialIncompleto++;
+              break;
+            case 'Colegial completo':
+              this.paiColegialCompleto++;
+              break;
+            case 'Universitário incompleto':
+              this.paiUniversitarioIncompleto++;
+              break;
+            case 'Universitário completo':
+              this.paiUniversitarioCompleto++;
+              break;
+          }
+
+          switch (this.info[i]['Atualmente, em que área você trabalha?']) {
+            case 'Nunca trabalhei':
+              this.nuncaTrabalhei++;
+              break;
+            case 'Estou desempregado(a), mas já trabalhei na área do curso que escolhi':
+              this.desempregadoMasJaTrabalheiNaArea++;
+              break;
+            case 'Trabalho na área do curso que escolhi':
+              this.trabalhoNaArea++;
+              break;
+            case 'Trabalho fora da área do curso que escolhi':
+              this.trabalhoForaDaArea++;
+              break;
+            case 'Estou desempregado(a) e nunca trabalhei na área do curso que escolhi':
+              this.desempregadoENuncaTrabalheiNaArea++;
+              break;
+
+          }
+
+          switch (this.info[i]['Se você trabalha, qual o período?']) {
+            case 'Manhã ou tarde':
+              this.manhaOuTarde++;
+              break;
+            case 'Manhã e tarde (integral)':
+              this.manhaETarde++;
+              break;
+            case 'Noite':
+              this.noite++;
+              break;
+            case 'Regime de turnos':
+              this.regimeDeTurnos++;
+              break;
+            case 'Variável':
+              this.variavel++;
+              break;
+          }
+
+          switch (this.info[i]['Durante sua vida escolar, você estudou:']) {
+            case 'Integralmente em escola pública federal, estadual ou municipal':
+              this.integralmenteEscolaPublica++;
+              break;
+            case 'Integralmente em escola particular':
+              this.integralmenteEscolaParticular++;
+              break;
+            case 'Maior parte em escola pública':
+              this.maiorParteEscolaPublica++;
+              break;
+            case 'Maior parte em escola particular':
+              this.maiorParteEscolaParticular++;
+              break;
+          }
+
+          switch (this.info[i]['Tem conhecimentos de informática?']) {
+            case 'Sim':
+              this.tenhoConhecimentoInformatica++;
+              break;
+            case 'Não':
+              this.naoTenhoConhecimentoInformatica++;
+              break;
+          }
+
+          switch (this.info[i]['Tem conhecimento básico em algum idioma além do Português? Qual(is)?']) {
+            case 'Inglês;':
+              this.faloIngles++;
+              break;
+            case 'Espanhol;':
+              this.faloEspanhol++;
+              break;
+            case 'Inglês; Espanhol':
+              this.faloInglesEEspanhol++;
+              break;
+          }
+
+          switch (this.info[i]['Você já estudou na FATEC Franca?']) {
+            case 'Sim':
+              this.jaEstudei++;
+              break;
+              case 'Não':
+              this.naoEstudei++;
+              break;
+          }
 
 
         }
+        console.log(this.periodoMatutino);
+        console.log(this.periodoNoturno);
+
+
 
 
       };
